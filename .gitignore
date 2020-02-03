@@ -1,0 +1,4 @@
+# Project exclude paths
+/.gradle/
+/ctx-api-web/build/
+/ctx-api-web/build/classes/java/main/

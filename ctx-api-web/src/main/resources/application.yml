@@ -1,0 +1,39 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9001/eureka/
+  instance:
+    prefer-ip-address: true
+    # ip-address: 192.168.100.17
+server:
+  port: 9033
+spring:
+  #  profiles:
+  #    active: aws
+  application:
+    name: ApiWeb
+
+feign:
+  client:
+    default:
+      #这里时间一定要调长，否则feign客户端会报ReadTimeOut  服务端报Error parsing HTTP request header
+      connectTimeout: 30000
+      readTimeout: 30000
+      loggerLevel: basic
+
+#开放所有页面节点  默认只开启了health、info两个节点
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+swagger:
+  basePackage: sg.ctx.api.controller # api 文档包名， 产品环境配置成com.product, 这样不会显示任何API
+
+logging:
+  level:
+    root: INFO
+  config: classpath:logging-config.xml
+
